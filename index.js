@@ -1,17 +1,18 @@
-class EnvGuardError extends Error {
+
+class EnvKeeperError extends Error {
   constructor(message, missing = [], invalid = []) {
     super(message);
-    this.name = 'EnvGuardError';
+    this.name = 'EnvKeeperError';
     this.missing = missing;
     this.invalid = invalid;
   }
 }
 
-class EnvGuard {
+class EnvKeeper {
   /**
    * Require specific environment variables to be set
    * @param {string[]} vars - Array of required environment variable names
-   * @throws {EnvGuardError} If any variables are missing
+   * @throws {EnvKeeperError} If any variables are missing
    */
   require(vars) {
     if (!Array.isArray(vars)) {
@@ -25,7 +26,7 @@ class EnvGuard {
 
     if (missing.length > 0) {
       const message = `Missing required environment variables: ${missing.join(', ')}`;
-      throw new EnvGuardError(message, missing);
+      throw new EnvKeeperError(message, missing);
     }
 
     return true;
@@ -34,7 +35,7 @@ class EnvGuard {
   /**
    * Validate environment variables with type checking
    * @param {Object} schema - Validation schema
-   * @throws {EnvGuardError} If validation fails
+   * @throws {EnvKeeperError} If validation fails
    */
   validate(schema) {
     if (typeof schema !== 'object' || schema === null) {
@@ -125,7 +126,7 @@ class EnvGuard {
         });
       }
 
-      throw new EnvGuardError(message.trim(), missing, invalid);
+      throw new EnvKeeperError(message.trim(), missing, invalid);
     }
 
     return true;
@@ -142,7 +143,7 @@ class EnvGuard {
     
     if (value === undefined || value === '') {
       if (defaultValue === null) {
-        throw new EnvGuardError(`Environment variable ${varName} is required`);
+        throw new EnvKeeperError(`Environment variable ${varName} is required`);
       }
       value = String(defaultValue);
     }
@@ -237,9 +238,9 @@ class EnvGuard {
 }
 
 // Create singleton instance
-const envGuard = new EnvGuard();
+const envKeeper = new EnvKeeper();
 
 // Export both the instance and the class
-module.exports = envGuard;
-module.exports.EnvGuard = EnvGuard;
-module.exports.EnvGuardError = EnvGuardError;
+module.exports = envKeeper;
+module.exports.EnvKeeper = EnvKeeper;
+module.exports.EnvKeeperError = EnvKeeperError;

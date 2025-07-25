@@ -1,3 +1,4 @@
+
 export interface ValidationRule {
   type?: 'string' | 'number' | 'boolean' | 'url' | 'email' | 'json' | 'port';
   minLength?: number;
@@ -19,15 +20,15 @@ export interface InvalidVariable {
   reason: string;
 }
 
-export class EnvGuardError extends Error {
-  name: 'EnvGuardError';
+export class EnvKeeperError extends Error {
+  name: 'EnvKeeperError';
   missing: string[];
   invalid: InvalidVariable[];
   
   constructor(message: string, missing?: string[], invalid?: InvalidVariable[]);
 }
 
-export class EnvGuard {
+export class EnvKeeper {
   require(vars: string[]): boolean;
   validate(schema: Record<string, string | ValidationRule>): boolean;
   get(varName: string, defaultValue?: any, validation?: string | ValidationRule): string;
@@ -35,6 +36,6 @@ export class EnvGuard {
   list(hideValues?: boolean): Record<string, string>;
 }
 
-declare const envGuard: EnvGuard;
-export default envGuard;
-export { EnvGuard, EnvGuardError };
+declare const envKeeper: EnvKeeper;
+export default envKeeper;
+export { EnvKeeper, EnvKeeperError };
