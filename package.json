@@ -1,27 +1,23 @@
 {
-  "name": "env-guard",
+  "name": "envkeeper",
   "version": "1.0.0",
-  "description": "Simple and powerful environment variable validation for Node.js applications",
+  "description": "Advanced CLI tool to protect .env files with Git history tracking, strict mode, and auto-backup",
   "main": "index.js",
-  "types": "index.d.ts",
+  "bin": {
+    "envkeeper": "./bin/envkeeper.js"
+  },
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "lint": "eslint index.js test/",
-    "prepublishOnly": "npm test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "environment",
     "env",
-    "validation",
-    "config",
-    "configuration",
-    "nodejs",
+    "environment",
     "dotenv",
-    "env-var",
-    "startup",
-    "guard"
+    "security",
+    "cli",
+    "gitignore",
+    "backup",
+    "protection"
   ],
   "author": "Anandakrishnan PM",
   "license": "MIT",
