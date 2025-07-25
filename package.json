@@ -1,6 +1,6 @@
 {
   "name": "envkeeper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advanced CLI tool to protect .env files with Git history tracking, strict mode, and auto-backup",
   "main": "index.js",
   "bin": {
