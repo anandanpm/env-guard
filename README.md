@@ -16,4 +16,4 @@ Simple and powerful environment variable validation for Node.js applications. Ca
 ## Installation
 
 ```bash
-npm install env-guard
+npm install envkeeper
